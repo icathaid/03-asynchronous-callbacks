@@ -1,10 +1,18 @@
 'use strict';
-
-module.exports.readFile = (file, thingy) => {
-  if(file.match(/bad/i) ) {
-    thingy('Invalid File');
-  }
-  else {
-    thingy(undefined, new Buffer('File Contents'));
+let fileContents = [];
+fileContents.length = 3;
+module.exports.readFile = (files, cb) => {
+  try {
+    if(files.match(/bad/i)) {
+      throw new Error('err');
+    }
+    if(files.match(/good/i)){
+      fileContents[0] = 'good';
+    }
+    if(files.match(/long/i)){
+      fileContents[1] = 'long';
+    }
+  } catch(e) {  
+    return undefined;  
   }
 };
