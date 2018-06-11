@@ -50,4 +50,13 @@ describe('File Reader Module', () => {
       expect(data).toBeNull();
     });
   });
+  it('should return multiple books in the order they were requested', () => {
+    let fileOne = `${__dirname}/../data/long.txt`;
+    let fileTwo = `${__dirname}/../data/good.txt`;
+    let files = [fileOne, fileTwo];
+    read(files, (err, data) => {
+      expect(err).toBeUndefined();
+      expect(data).toBeNull;
+    });
+  });
 });
